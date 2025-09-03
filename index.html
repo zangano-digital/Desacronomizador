@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>🐝 Desacronimizador Zángano</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: sans-serif; margin: 2em; background: #fefefe; color: #222; }
+    h1 { color: #e09100; }
+    input, button { font-size: 1em; padding: 0.5em; margin: 0.2em 0; }
+    button { background: #ffd54d; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #ffb300; }
+    #res { margin-top: 1em; padding: 1em; border: 1px solid #ddd; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>🐝 Desacronimizador Zángano</h1>
+  <p>Escribe un acrónimo (ej: <b>IT</b>, <b>OT</b>, <b>IA</b>, <b>PA</b>):</p>
+  <input id="q" placeholder="Acrónimo aquí">
+  <button onclick="buscar()">Desacronomizar</button>
+  <div id="res">👉 Esperando un acrónimo...</div>
+
+  <script>
+    const data = {
+      "IT": [
+        "Information Technology — Informática de oficina",
+        "Imagen Tridimensional — Modelado 3D"
+      ],
+      "OT": [
+        "Operational Technology — Tecnología industrial",
+        "Occupational Therapy — Terapia ocupacional"
+      ],
+      "IA": [
+        "Inteligencia Artificial — Sistemas que imitan tareas cognitivas"
+      ],
+      "PA": [
+        "Putos Acrónimos — Demasiadas siglas sin control"
+      ]
+    };
+
+    function buscar() {
+      const q = document.getElementById("q").value.trim().toUpperCase();
+      const res = data[q] || ["No encontrado 🤷🏼‍♂️"];
+      document.getElementById("res").innerHTML =
+        "<b>" + q + "</b><br>" + res.join("<br>");
+    }
+  </script>
+</body>
+</html>
